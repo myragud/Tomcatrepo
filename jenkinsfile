@@ -1,11 +1,23 @@
 pipeline {
-  agent any
-  tools {
-    maven 'maven-3.9.0' 
-  }
-  stages {
-    stage ('Build') {
-      steps {
-        sh 'mvn clean package'
-      }
-    }
+            agent any
+            tools {
+                maven 'Maven 3'
+            }
+            stages {
+                stage('Build') {
+                    steps {
+                        sh 'mvn clean package'
+                    }
+                    post {
+                        success {
+                            archiveArtifacts artifacts: '/target/*.war', fingerprint: true
+                        }
+                    }
+                }
+                stage('Deploy to Tomcat') {
+                    steps {
+                        deployToContainer(credentialsId: 'tomcat-deploy-user', url: 'http://tomcatserver:8080/manager/text', war: '/*.war', contextPath: 'yourAppContext')
+                    }
+                }
+            }
+        }
