@@ -13,7 +13,7 @@ pipeline {
     
                 stage('Build') {
                     steps {
-                        bat 'mvn -f C:\ProgramData\Jenkins\.jenkins\workspace\tomcat-project\demo\pom.xml package'
+                        bat 'mvn package'
                     }
     
                     // // post {
