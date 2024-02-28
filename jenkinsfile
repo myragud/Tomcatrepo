@@ -16,11 +16,11 @@ pipeline {
                         bat 'mvn package'
                     }
     
-                    // // post {
-                    //     success {
-                    //         archiveArtifacts artifacts: '/target/*.war', fingerprint: true
-                    //     }
-                    // }
+                    post {
+                        success {
+                            archiveArtifacts artifacts: '/target/*.war', fingerprint: true
+                        }
+                    }
                 }
                 stage('clean'){
                     steps {
