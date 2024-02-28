@@ -13,7 +13,7 @@ pipeline {
     
                 stage('Build') {
                     steps {
-                        bat 'mvn -f C:\Users\Aaloc\git-2024\Tomcat-gitfolder\demo\pom.xml package'
+                        bat 'mvn package'
                     }
     
                     // // post {
