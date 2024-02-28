@@ -1,0 +1,36 @@
+pipeline {
+            agent any
+            tools {
+                maven 'local_maven'
+            }
+            stages {
+                stage('version'){
+                    steps {
+                        bat 'mvn --version'
+                        bat 'cd'
+                    }
+                }
+    
+                stage('Build') {
+                    steps {
+                        bat 'mvn package'
+                    }
+    
+                    post {
+                        success {
+                            archiveArtifacts artifacts: '/target/*.war', fingerprint: true
+                        }
+                    }
+                }
+                stage('clean'){
+                    steps {
+                        bat 'mvn clean install'
+                    }
+                }
+                // stage('Deploy to Tomcat') {
+                //     steps {
+                //         deployToContainer(credentialsId: 'tomcat-deploy-user', url: 'http://tomcatserver:8080/manager/text', war: '/*.war', contextPath: 'yourAppContext')
+                //     }
+                // }
+            }
+        }
