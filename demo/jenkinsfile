@@ -29,7 +29,7 @@ pipeline {
                 }
                 // stage('Deploy to Tomcat') {
                 //     steps {
-                //         deployToContainer(credentialsId: 'tomcat-deploy-user', url: 'http://tomcatserver:8080/manager/text', war: '/*.war', contextPath: 'yourAppContext')
+                //         deployToContainer(credentialsId: 'deployuser', url: 'http://localhost:8085', war: '/*.war', contextPath: 'yourAppContext')
                 //     }
                 // }
             }
