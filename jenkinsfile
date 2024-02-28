@@ -1,36 +1,10 @@
 pipeline {
-            agent any
-            tools {
-                maven 'local_maven'
-            }
-            stages {
-                stage('version'){
-                    steps {
-                        sh 'mvn --version'
-                        sh 'pwd'
-                    }
-                }
-    
-                stage('Build') {
-                    steps {
-                        sh 'mvn  package'
-                    }
-    
-                    // // post {
-                    //     success {
-                    //         archiveArtifacts artifacts: '/target/*.war', fingerprint: true
-                    //     }
-                    // }
-                }
-                stage('clean'){
-                    steps {
-                        sh 'mvn clean install'
-                    }
-                }
-                // stage('Deploy to Tomcat') {
-                //     steps {
-                //         deployToContainer(credentialsId: 'tomcat-deploy-user', url: 'http://tomcatserver:8080/manager/text', war: '/*.war', contextPath: 'yourAppContext')
-                //     }
-                // }
+    agent any
+    stages {
+        stage('Build') { 
+            steps {
+                sh 'mvn -B -DskipTests clean package' 
             }
         }
+    }
+}
