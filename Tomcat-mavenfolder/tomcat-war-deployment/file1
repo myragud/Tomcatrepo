@@ -1,0 +1,3 @@
+ mvn validate
+Update Dependencies: mvn dependency:resolve
+Build Project: mvn clean install
