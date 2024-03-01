@@ -3,6 +3,7 @@ pipeline {
             tools {
                 maven 'local_maven'
             }
+            }
             stages {
                 stage('version'){
                     steps {
@@ -28,9 +29,9 @@ pipeline {
                     }
                 }
 
-                stage('Deploy to Tomcat') {
+                stage('Deployment') {
                     steps {
-                         deployToTomcat(credentialsId: 'de13baa938-ba75-4b34-a1fb-30c6739850c3', url: 'http://localhost:8085', war: '/*.war', contextPath: 'http://localhost:8085/manager/html')
+                         deploy adapters: [tomcat9(credentialsId: 'de13baa938-ba75-4b34-a1fb-30c6739850c3', path: 'url: 'http://localhost:8085/')], war: '/*.war', contextPath: 'counterwebapp')
                     }
                 }
             }
