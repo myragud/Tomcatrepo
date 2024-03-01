@@ -29,9 +29,10 @@ pipeline {
                     }
                 }
 
-                stage('Deployment') {
-                    steps {
-                         //deploy adapters: [tomcat9(credentialsId: 'de13baa938-ba75-4b34-a1fb-30c6739850c3', path: 'url: 'http://localhost:8085/')], war: '/*.war', contextPath: 'counterwebapp')
-                    }
-                }
+                // stage('Deployment') {
+                //     steps {
+                //          //deploy adapters: [tomcat9(credentialsId: 'de13baa938-ba75-4b34-a1fb-30c6739850c3', path: 'url: 'http://localhost:8085/')], war: '/*.war', contextPath: 'counterwebapp')
+                //     }
+                // }
+            }
             }
